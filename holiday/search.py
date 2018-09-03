@@ -14,11 +14,6 @@ def parse_args():
         type=str,
         required=True,
         help="The path of search result")
-    parser.add_argument(
-        '--result_num',
-        type=int,
-        default=10,
-        help="The num of top results (default:10)")
     return parser.parse_args()
 def search():
     args = parse_args()
@@ -41,7 +36,7 @@ def search():
     rank_ID = np.argsort(result,axis=1)
 
     # output result
-    with open("result.dat",'w') as output:
+    with open(args.result_path,'w') as output:
         for i,query_num in enumerate(querys_number):
             pic_suffix = ".jpg"
             query_name = "%6d%s"%(query_num,pic_suffix)
