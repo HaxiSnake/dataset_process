@@ -1,0 +1,5 @@
+*.mat
+!example.dat
+*.dat
+!perfect_result.dat
+!result.dat
