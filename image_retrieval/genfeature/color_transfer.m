@@ -1,0 +1,12 @@
+function [P] = color_transfer(HSV,colorindex,CB)
+    HSV(:,:,1) = HSV(:,:,1)*360;    
+    CH = CB(1);
+    CS = CB(2);
+    CV = CB(3);   
+   QHSV1= floor(HSV(:,:,1)*CH/360.0);
+   QHSV2= floor(HSV(:,:,2)*CS/1.0);
+   QHSV3= floor(HSV(:,:,3)*CV/1.0);
+   QHSV1(QHSV1>CH-1)=CH-1;
+   QHSV2(QHSV2>CS-1)=CS-1;
+   QHSV3(QHSV3>CV-1)=CV-1;
+   P = (CS*CV)*QHSV1 + CV*QHSV2 + QHSV3;
